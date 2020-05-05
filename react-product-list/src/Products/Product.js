@@ -13,4 +13,3 @@ const product = (props) => {
 };
 
 export default product;
-//shift alt f format document

@@ -15,14 +15,21 @@ class App extends Component {
     showProducts: false
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      products: [
-        { name: 'Macbook Pro', price: 1700 },
-        { name: event.target.value, price: 1400 },
-        { name: 'iPad', price: 650 }
-      ]
+  nameChangedHandler = (event, id) => {
+    const productIndex = this.state.products.findIndex(p => {
+      return p.id ===id
     })
+
+    const product = {
+      ...this.state.products[productIndex]
+    }
+
+    product.name = event.target.value;
+
+    const products = [...this.state.products]
+    products[productIndex] = product
+
+    this.setState(  {products: products}  )
   }
 
   deleteProductHandler = (productIndex) => {
@@ -55,7 +62,8 @@ class App extends Component {
               click={() => this.deleteProductHandler(index)}
               name={product.name}
               price={product.price}
-              key={product.id} />
+              key={product.id}
+              changed = {(event) => this.nameChangedHandler(event, product.id)} />
           })}
         </div>
       )
