@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Product from './Products/Product';
+//edit multiple lines: alt
+//shift alt f format document
 
 class App extends Component {
   state = {
     products: [
-      { name: 'Macbook Pro', price: 1700 },
-      { name: 'Surface Pro', price: 1400 },
-      { name: 'iPad', price: 650 }
+      { id: 'asas', name: 'Macbook Pro', price: 1700 },
+      { id: 'dddd', name: 'Surface Pro', price: 1400 },
+      { id: 'rere', name: 'iPad', price: 650 }
     ],
     extraState: 'some additional value',
     showProducts: false
-  }
-
-  switchNameHandler = (newName) => {
-    this.setState({
-      products: [
-        { name: newName, price: 1700 },
-        { name: 'Surface Pro', price: 1400 },
-        { name: 'iPad', price: 600 }
-      ]
-    })
   }
 
   nameChangedHandler = (event) => {
@@ -31,6 +23,12 @@ class App extends Component {
         { name: 'iPad', price: 650 }
       ]
     })
+  }
+
+  deleteProductHandler = (productIndex) => {
+    const products = [...this.state.products]
+    products.splice(productIndex, 1)
+    this.setState({ products: products })
   }
 
   toggleProductsHandler = () => {
@@ -52,17 +50,13 @@ class App extends Component {
     if (this.state.showProducts) {
       products = (
         <div>
-          <Product
-            name={this.state.products[0].name}
-            price={this.state.products[0].price} />
-          <Product
-            name={this.state.products[1].name}
-            price={this.state.products[1].price}
-            click={this.switchNameHandler.bind(this, 'Changed Product Name!')}
-            changed={this.nameChangedHandler} >Manufacturer: Microsoft Corporation</Product>
-          <Product
-            name={this.state.products[2].name}
-            price={this.state.products[2].price} />
+          {this.state.products.map((product, index) => {
+            return <Product
+              click={() => this.deleteProductHandler(index)}
+              name={product.name}
+              price={product.price}
+              key={product.id} />
+          })}
         </div>
       )
     }
@@ -74,7 +68,7 @@ class App extends Component {
         <button
           style={style}
           onClick={this.toggleProductsHandler}>Toggle Product List</button>
-          {products}
+        {products}
       </div>
     );
   }
