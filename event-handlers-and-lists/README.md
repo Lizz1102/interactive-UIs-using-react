@@ -1,16 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 
 ## This project demostrates how to
-..* Implement two way binding 
-..* Validate inputs using conditionals
-..* Show lists
-..* Delete from list on clicking individual items 
+* Implement two way binding 
+* Validate inputs using conditionals
+* Show lists
+* Delete from list on clicking individual items 
 
 ## Statrt typing into the input. What this app does
-..* Shows typed text and length instantly in the paragraph below 
-..* Shows if the input passed validation (minimum length: 5)
-..* Shows list of input characters below in boxes 
-..* Click on the list items to delete the respective character from input 
+* Shows typed text and length instantly in the paragraph below 
+* Shows if the input passed validation (minimum length: 5)
+* Shows list of input characters below in boxes 
+* Click on the list items to delete the respective character from input 
 
 ## How to run the project
 
