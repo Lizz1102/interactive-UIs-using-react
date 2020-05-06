@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import Radium from 'radium'
 
 import './Product.css';
 
@@ -12,4 +13,4 @@ const product = (props) => {
     )
 };
 
-export default product;
+export default Radium(product)

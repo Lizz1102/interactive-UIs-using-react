@@ -1,0 +1,7 @@
+1. Issue: After installing Radium, got error 
+	  Uncaught TypeError: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createContext is not a function at 			Object../node_modules/radium/es/context.js (context.js:6)
+   Cause: It is actually a version miss match. So, updating the react-dom, react & redux packages would solve the issue
+   
+   Solution: Run command 
+		npm update react react-dom
+	     using powershell/cmd in the project directory 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium'
 import Product from './Products/Product';
 //edit multiple lines: alt
 //shift alt f format document
@@ -50,7 +51,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let products = null
@@ -70,13 +75,25 @@ class App extends Component {
       )
 
       style.backgroundColor = 'red'
+      style[':hover']= {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
 
       if(this.state.products.length == 0) {
         style.backgroundColor = 'grey'
+        style[':hover']= {
+          backgroundColor: 'lightgrey',
+          color: 'black'
+        }
       }
     } else {
       if(this.state.products.length == 0) {
         style.backgroundColor = 'grey'
+        style[':hover']= {
+          backgroundColor: 'lightgrey',
+          color: 'black'
+        }
       }
     }
 
@@ -102,4 +119,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
+
