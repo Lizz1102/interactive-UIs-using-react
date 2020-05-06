@@ -45,7 +45,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'coral',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -67,12 +68,31 @@ class App extends Component {
           })}
         </div>
       )
+
+      style.backgroundColor = 'red'
+
+      if(this.state.products.length == 0) {
+        style.backgroundColor = 'grey'
+      }
+    } else {
+      if(this.state.products.length == 0) {
+        style.backgroundColor = 'grey'
+      }
     }
+
+    const classes = []
+    if(this.state.products.length <=2 ) {
+      classes.push('red')
+    }
+    if(this.state.products.length <= 1 ) {
+      classes.push('bold')
+    }
+
 
     return (
       <div className="App">
         <h1>My First React App</h1>
-        <p>Showing a list of products!</p>
+        <p className={classes.join(' ')}>Showing a list of products!</p>
         <button
           style={style}
           onClick={this.toggleProductsHandler}>Toggle Product List</button>
