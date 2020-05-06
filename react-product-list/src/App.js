@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import Radium from 'radium'
-import Product from './Products/Product';
+import React, { Component } from 'react'
+import './App.css'
+import Radium, { StyleRoot } from 'radium'
+import Product from './Products/Product'
 //edit multiple lines: alt
 //shift alt f format document
 
@@ -18,7 +18,7 @@ class App extends Component {
 
   nameChangedHandler = (event, id) => {
     const productIndex = this.state.products.findIndex(p => {
-      return p.id ===id
+      return p.id === id
     })
 
     const product = {
@@ -30,7 +30,7 @@ class App extends Component {
     const products = [...this.state.products]
     products[productIndex] = product
 
-    this.setState(  {products: products}  )
+    this.setState({ products: products })
   }
 
   deleteProductHandler = (productIndex) => {
@@ -69,28 +69,28 @@ class App extends Component {
               name={product.name}
               price={product.price}
               key={product.id}
-              changed = {(event) => this.nameChangedHandler(event, product.id)} />
+              changed={(event) => this.nameChangedHandler(event, product.id)} />
           })}
         </div>
       )
 
       style.backgroundColor = 'red'
-      style[':hover']= {
+      style[':hover'] = {
         backgroundColor: 'salmon',
         color: 'black'
       }
 
-      if(this.state.products.length == 0) {
+      if (this.state.products.length == 0) {
         style.backgroundColor = 'grey'
-        style[':hover']= {
+        style[':hover'] = {
           backgroundColor: 'lightgrey',
           color: 'black'
         }
       }
     } else {
-      if(this.state.products.length == 0) {
+      if (this.state.products.length == 0) {
         style.backgroundColor = 'grey'
-        style[':hover']= {
+        style[':hover'] = {
           backgroundColor: 'lightgrey',
           color: 'black'
         }
@@ -98,26 +98,28 @@ class App extends Component {
     }
 
     const classes = []
-    if(this.state.products.length <=2 ) {
+    if (this.state.products.length <= 2) {
       classes.push('red')
     }
-    if(this.state.products.length <= 1 ) {
+    if (this.state.products.length <= 1) {
       classes.push('bold')
     }
 
 
     return (
-      <div className="App">
-        <h1>My First React App</h1>
-        <p className={classes.join(' ')}>Showing a list of products!</p>
-        <button
-          style={style}
-          onClick={this.toggleProductsHandler}>Toggle Product List</button>
-        {products}
-      </div>
-    );
+      <StyleRoot>
+        <div className="App">
+          <h1>My First React App</h1>
+          <p className={classes.join(' ')}>Showing a list of products!</p>
+          <button
+            style={style}
+            onClick={this.toggleProductsHandler}>Toggle Product List</button>
+          {products}
+        </div>
+      </StyleRoot>
+    )
   }
 }
 
-export default Radium(App);
+export default Radium(App)
 
