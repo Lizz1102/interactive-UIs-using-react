@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import Radium, { StyleRoot } from 'radium'
+
 import Product from './Products/Product'
 //edit multiple lines: alt
 //shift alt f format document
@@ -107,19 +107,19 @@ class App extends Component {
 
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>My First React App</h1>
-          <p className={classes.join(' ')}>Showing a list of products!</p>
-          <button
-            style={style}
-            onClick={this.toggleProductsHandler}>Toggle Product List</button>
-          {products}
-        </div>
-      </StyleRoot>
+
+      <div className="App">
+        <h1>My First React App</h1>
+        <p className={classes.join(' ')}>Showing a list of products!</p>
+        <button
+          style={style}
+          onClick={this.toggleProductsHandler}>Toggle Product List</button>
+        {products}
+      </div>
+
     )
   }
 }
 
-export default Radium(App)
+export default App
 
