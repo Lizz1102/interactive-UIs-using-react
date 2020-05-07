@@ -1,9 +1,24 @@
 import React, { Component } from 'react'
-import './App.css'
+import styled from 'styled-components'
 
+import './App.css'
 import Product from './Products/Product'
+
 //edit multiple lines: alt
 //shift alt f format document
+
+const StyledButton = styled.button`
+      background-color: ${props => props.alt ? 'red' : 'limegreen'};
+      color: white;
+      font: inherit;
+      border: 1px solid blue;
+      padding: 8px;
+      cursor: pointer;
+      &:hover {
+        background-color: ${props => props.alt ? 'yellow' : 'greenyellow'};
+        color: black;
+      }
+    `
 
 class App extends Component {
   state = {
@@ -13,7 +28,7 @@ class App extends Component {
       { id: 'rere', name: 'iPad', price: 650 }
     ],
     extraState: 'some additional value',
-    showProducts: false
+    showProducts: false   //flag to show/hide products list
   }
 
   nameChangedHandler = (event, id) => {
@@ -45,19 +60,6 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
-
     let products = null
 
     if (this.state.showProducts) {
@@ -73,28 +75,6 @@ class App extends Component {
           })}
         </div>
       )
-
-      style.backgroundColor = 'red'
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
-
-      if (this.state.products.length == 0) {
-        style.backgroundColor = 'grey'
-        style[':hover'] = {
-          backgroundColor: 'lightgrey',
-          color: 'black'
-        }
-      }
-    } else {
-      if (this.state.products.length == 0) {
-        style.backgroundColor = 'grey'
-        style[':hover'] = {
-          backgroundColor: 'lightgrey',
-          color: 'black'
-        }
-      }
     }
 
     const classes = []
@@ -107,13 +87,12 @@ class App extends Component {
 
 
     return (
-
       <div className="App">
         <h1>My First React App</h1>
         <p className={classes.join(' ')}>Showing a list of products!</p>
-        <button
-          style={style}
-          onClick={this.toggleProductsHandler}>Toggle Product List</button>
+        <StyledButton alt={this.state.showProducts} onClick={this.toggleProductsHandler}>
+          Toggle Product List
+        </StyledButton>
         {products}
       </div>
 

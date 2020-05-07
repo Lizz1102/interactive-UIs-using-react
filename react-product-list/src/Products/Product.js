@@ -17,11 +17,6 @@ const StyledDiv = styled.div`
         `
 
 const product = (props) => {
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    }
     return (
         <StyledDiv>
             <p onClick={props.click}>This is a {props.name} and price is ${props.price}</p>
